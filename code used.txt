@@ -1,0 +1,906 @@
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3
+$ git init
+Initialized empty Git repository in C:/Users/etgsp31/Desktop/git_learn/git3/.git/
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (master)
+$ git branch -M main
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git remote add origin https://github.com/BaselYoussef901/est3.git
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ echo "# HEADER" >> README.md
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git add .
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git commit -m "docs: add project description"
+[main (root-commit) 0a792ff] docs: add project description
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git switch -c develop
+Switched to a new branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch -c feature/gui
+Switched to a new branch 'feature/gui'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/gui)$ touch gui.html
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/gui)$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/gui)$ git commit -m "feat: create UI"
+[feature/gui b18d10f] feat: create UI
+ 1 file changed, 1 insertion(+)
+ create mode 100644 gui.html
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/gui)$ git log --oneline
+b18d10f (HEAD -> feature/gui) feat: create UI
+0a792ff (main, develop) docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/gui)$ git switch develop 
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git merge feature/gui
+Updating 0a792ff..b18d10f
+Fast-forward
+ gui.html | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 gui.html
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch -d feature/gui
+Deleted branch feature/gui (was b18d10f).
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git status
+On branch develop
+nothing to commit, working tree clean
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git log --oneline
+b18d10f (HEAD -> develop) feat: create UI
+0a792ff (main) docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch
+* develop
+  main
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch -c release/v1.0.0
+Switched to a new branch 'release/v1.0.0'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.0)
+$ touch version.txt
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.0)
+$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.0)
+$ git commit -m "Relase version 1.0.0"
+[release/v1.0.0 7c0afed] Relase version 1.0.0
+ 1 file changed, 1 insertion(+)
+ create mode 100644 version.txt
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.0)
+$ git log --oneline
+7c0afed (HEAD -> release/v1.0.0) Relase version 1.0.0
+b18d10f (develop) feat: create UI
+0a792ff (main) docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.0)
+$ git switch main
+Switched to branch 'main'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git merge release/v1.0.0
+Updating 0a792ff..7c0afed
+Fast-forward
+ gui.html    | 1 +
+ version.txt | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 gui.html
+ create mode 100644 version.txt
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git merge release/v1.0.0
+Updating b18d10f..7c0afed
+Fast-forward
+ version.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 version.txt
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git log --oneline
+7c0afed (HEAD -> develop, release/v1.0.0, main) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch main
+Switched to branch 'main'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git log --oneline
+7c0afed (HEAD -> main, release/v1.0.0, develop) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git push -u origin main
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (9/9), 748 bytes | 74.00 KiB/s, done.
+Total 9 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)   
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/BaselYoussef901/est3.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git tag -a v1.0.0 -m "1.0.0 tag version"
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git push origin v1.0.0
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 167 bytes | 83.00 KiB/s, done.     
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)   
+To https://github.com/BaselYoussef901/est3.git
+ * [new tag]         v1.0.0 -> v1.0.0
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git branch --delete release/v1.0.0
+Deleted branch release/v1.0.0 (was 7c0afed).
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git branch
+  develop
+* main
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch -c feature/splash
+Switched to a new branch 'feature/splash'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/splash)
+$ touch splash.html
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/splash)
+$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/splash)
+$ git commit -m "feat: add splash to UI"
+[feature/splash 2de54d2] feat: add splash to UI
+ 1 file changed, 1 insertion(+)
+ create mode 100644 splash.html
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/splash)
+$ git log --oneline
+2de54d2 (HEAD -> feature/splash) feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main, main, develop) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/splash)
+$ git status
+On branch feature/splash
+nothing to commit, working tree clean
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/splash)
+$ git log --oneline
+2de54d2 (HEAD -> feature/splash) feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main, main, develop) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/splash)
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git rebase feature/splash
+Successfully rebased and updated refs/heads/develop.
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git log --oneline
+2de54d2 (HEAD -> develop, feature/splash) feat: add splash to UI7c0afed (tag: v1.0.0, origin/main, main) Relase version 1.0.0   
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git status
+On branch develop
+nothing to commit, working tree clean
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch --delete feature/splash
+Deleted branch feature/splash (was 2de54d2).
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch
+* develop
+  main
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git status
+On branch develop
+nothing to commit, working tree clean
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git log --onelin
+fatal: unrecognized argument: --onelin
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git log --oneline
+2de54d2 (HEAD -> develop) feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main, main) Relase version 1.0.0   
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git status
+On branch develop
+nothing to commit, working tree clean
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch -c hotfix/readme
+Switched to a new branch 'hotfix/readme'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (hotfix/readme)
+$ git status
+On branch hotfix/readme
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)    
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (hotfix/readme)
+$ git add .
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (hotfix/readme)
+$ git commit -m "fix: add description to README"
+[hotfix/readme 92623cc] fix: add description to README
+ 1 file changed, 2 insertions(+)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (hotfix/readme)
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git merge hotfix/readme
+Updating 7c0afed..92623cc
+Fast-forward
+ README.md   | 2 ++
+ splash.html | 1 +
+ 2 files changed, 3 insertions(+)
+ create mode 100644 splash.html
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git merge hotfix/readme
+Updating 2de54d2..92623cc
+Fast-forward
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch --delete hotfix/readme
+Deleted branch hotfix/readme (was 92623cc).
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git log --oneline
+92623cc (HEAD -> develop, main) fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch
+* develop
+  main
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git status
+On branch develop
+nothing to commit, working tree clean
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch -c feature/stash-readme
+Switched to a new branch 'feature/stash-readme'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git switch main
+M       README.md
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch develop
+M       README.md
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch feature/stas-readme
+fatal: invalid reference: feature/stas-readme
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch feature/stash-readme
+M       README.md
+Switched to branch 'feature/stash-readme'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git log --oneline
+92623cc (HEAD -> feature/stash-readme, main, develop) fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git reset README.md
+Unstaged changes after reset:
+M       README.md
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git switch main
+M       README.md
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git swtich feature/stash-readme
+git: 'swtich' is not a git command. See 'git --help'.
+
+The most similar command is
+        switch
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch feature/stash-readme
+M       README.md
+Switched to branch 'feature/stash-readme'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git stash
+Saved working directory and index state WIP on feature/stash-readme: 92623cc fix: add description to README
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git switch main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)    
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   splash.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git add splash.html
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git commit -m "refactor: change line in README"
+[main d7d3135] refactor: change line in README
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git reset HEAD~1
+Unstaged changes after reset:
+M       splash.html
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git reset --hard HEAD~1
+HEAD is now at 2de54d2 feat: add splash to UI
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git status
+On branch develop
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)    
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   splash.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git commit -m "refactor: add stashed line"
+[develop 0ea093a] refactor: add stashed line
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch feature/stash-readme
+Switched to branch 'feature/stash-readme'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stasMerge branch 'feature/stash-readme' into develop for a stash`
+h-readme)
+$ git stash apply
+On branch feature/stash-readme
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)    
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git add README.md
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git commit -m "feat: add stash line after apply"
+[feature/stash-readme 50add8f] feat: add stash line after apply 
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/stash-readme)
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git merge feature/stash-readme
+Merge made by the 'ort' strategy.
+ README.md | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git log --oneline
+fa1b9b4 (HEAD -> develop) Merge branch 'feature/stash-readme' into develop for a stash`
+50add8f (feature/stash-readme) feat: add stash line after apply 
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 (main) feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch
+* develop
+  feature/stash-readme
+  main
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch --delete feature/stash-readme
+Deleted branch feature/stash-readme (was 50add8f).
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git status
+On branch develop
+nothing to commit, working tree clean
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git log --oneline
+fa1b9b4 (HEAD -> develop) Merge branch 'feature/stash-readme' into develop for a stash`
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 (main) feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git log --oneline
+2de54d2 (HEAD -> main) feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch -c release/v1.0.1
+Switched to a new branch 'release/v1.0.1'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.1)
+$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.1)
+$ git commit -m "refactor: update version number"
+[release/v1.0.1 2097174] refactor: update version number
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.1)
+$ git log --oneline
+2097174 (HEAD -> release/v1.0.1) refactor: update version number2de54d2 (main) feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.1)
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch -D release/v1.0.1
+Deleted branch release/v1.0.1 (was 2097174).
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch -c release/v1.0.1
+Switched to a new branch 'release/v1.0.1'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.1)
+$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.1)
+$ git commit -m "refactor: update version tag"
+[release/v1.0.1 f703ef1] refactor: update version tag
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (release/v1.0.1)
+$ git switch main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git log --oneline
+2de54d2 (HEAD -> main) feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git log --oneline
+fa1b9b4 (HEAD -> develop) Merge branch 'feature/stash-readme' into develop for a stash`
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 (main) feat: add splash to UI
+7c0afed (tag: v1.0.0, origin/main) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git merge release/v1.0.1
+Updating 2de54d2..f703ef1
+Fast-forward
+ README.md   | 4 ++++
+ splash.html | 4 +++-
+ version.txt | 2 +-
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git merge release/v1.0.1
+Updating fa1b9b4..f703ef1
+Fast-forward
+ version.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git branch --delete release/v1.0.1
+Deleted branch release/v1.0.1 (was f703ef1).
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)    
+$ git switch main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 6 commits.
+  (use "git push" to publish your local commits)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)       
+$ git tag -a v1.0.1 -m "Release version 1.0.1"
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git push
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (15/15), done.
+Writing objects: 100% (17/17), 1.81 KiB | 84.00 KiB/s, done.
+Total 17 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)        
+remote: Resolving deltas: 100% (5/5), done.
+To https://github.com/BaselYoussef901/est3.git
+   7c0afed..f703ef1  main -> main
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git push origin v1.0.1
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 174 bytes | 58.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/BaselYoussef901/est3.git
+ * [new tag]         v1.0.1 -> v1.0.1
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ touch user_model.py
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git log --oneline
+f703ef1 (HEAD -> develop, tag: v1.0.1, origin/main, main) refactor: update version tag
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git reflog
+f703ef1 (HEAD -> develop, tag: v1.0.1, origin/main, main) HEAD@{0}: checkout: moving from main to develop
+f703ef1 (HEAD -> develop, tag: v1.0.1, origin/main, main) HEAD@{1}: checkout: moving from develop to main
+f703ef1 (HEAD -> develop, tag: v1.0.1, origin/main, main) HEAD@{2}: merge release/v1.0.1: Fast-forward
+fa1b9b4 HEAD@{3}: checkout: moving from main to develop
+f703ef1 (HEAD -> develop, tag: v1.0.1, origin/main, main) HEAD@{4}: merge release/v1.0.1: Fast-forward
+2de54d2 HEAD@{5}: checkout: moving from develop to main
+fa1b9b4 HEAD@{6}: checkout: moving from main to develop
+2de54d2 HEAD@{7}: checkout: moving from release/v1.0.1 to main        
+f703ef1 (HEAD -> develop, tag: v1.0.1, origin/main, main) HEAD@{8}: commit: refactor: update version tag
+fa1b9b4 HEAD@{9}: checkout: moving from develop to release/v1.0.1
+fa1b9b4 HEAD@{10}: checkout: moving from release/v1.0.1 to develop    
+2097174 HEAD@{11}: commit: refactor: update version number
+2de54d2 HEAD@{12}: checkout: moving from main to release/v1.0.1       
+2de54d2 HEAD@{13}: checkout: moving from develop to main
+fa1b9b4 HEAD@{14}: merge feature/stash-readme: Merge made by the 'ort' strategy.
+0ea093a HEAD@{15}: checkout: moving from feature/stash-readme to develop
+50add8f HEAD@{16}: commit: feat: add stash line after apply
+92623cc HEAD@{17}: checkout: moving from develop to feature/stash-readme
+0ea093a HEAD@{18}: commit: refactor: add stashed line
+92623cc HEAD@{19}: checkout: moving from main to develop
+2de54d2 HEAD@{20}: reset: moving to HEAD~1
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git switch -c feature/user-model
+Switched to a new branch 'feature/user-model'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/user-model)
+$ touch user_model.py
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/user-model)
+$ git status
+On branch feature/user-model
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   user_model.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   user_model.py
+
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/user-model)
+$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/user-model)
+$ git commit -m "feat: add user model"
+[feature/user-model 43b2cfc] feat: add user model
+ 1 file changed, 11 insertions(+)
+ create mode 100644 user_model.py
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/user-model)
+$ git add .
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/user-model)
+$ git commit -m "feat: update user model with retrieve functions"
+[feature/user-model b3b92aa] feat: update user model with retrieve functions
+ 1 file changed, 22 insertions(+)
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/user-model)
+$ git log --oneline
+b3b92aa (HEAD -> feature/user-model) feat: update user model with retrieve functions
+43b2cfc feat: add user model
+f703ef1 (tag: v1.0.1, origin/main, main, develop) refactor: update version tag
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (feature/user-model)
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git merge feature/user-model
+Updating f703ef1..b3b92aa
+Fast-forward
+ user_model.py | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+ create mode 100644 user_model.py
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git branch --delete feature/user-model
+Deleted branch feature/user-model (was b3b92aa).
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git log --oneline
+b3b92aa (HEAD -> develop) feat: update user model with retrieve functions
+43b2cfc feat: add user model
+f703ef1 (tag: v1.0.1, origin/main, main) refactor: update version tag 
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git log --oneline
+f703ef1 (HEAD -> main, tag: v1.0.1, origin/main) refactor: update version tag
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git log --oneline
+b3b92aa (HEAD -> develop) feat: update user model with retrieve functions
+43b2cfc feat: add user model
+f703ef1 (tag: v1.0.1, origin/main, main) refactor: update version tag 
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0) Relase version 1.0.0
+f703ef1 (tag: v1.0.1, origin/main, main) refactor: update version tag 
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+f703ef1 (tag: v1.0.1, origin/main, main) refactor: update version tag 
+f703ef1 (tag: v1.0.1, origin/main, main) refactor: update version tag 
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git log --oneline
+f703ef1 (HEAD -> main, tag: v1.0.1, origin/main) refactor: update version tag
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git siwtch develop
+git: 'siwtch' is not a git command. See 'git --help'.
+
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git branch
+  develop
+* main
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git log --oneline
+f703ef1 (HEAD -> main, tag: v1.0.1, origin/main) refactor: update version tag
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (main)
+$ git switch develop
+Switched to branch 'develop'
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$ git log --oneline
+b3b92aa (HEAD -> develop) feat: update user model with retrieve functions
+43b2cfc feat: add user model
+f703ef1 (tag: v1.0.1, origin/main, main) refactor: update version tag 
+fa1b9b4 Merge branch 'feature/stash-readme' into develop for a stash` 
+50add8f feat: add stash line after apply
+0ea093a refactor: add stashed line
+92623cc fix: add description to README
+2de54d2 feat: add splash to UI
+7c0afed (tag: v1.0.0) Relase version 1.0.0
+b18d10f feat: create UI
+0a792ff docs: add project description
+
+etgsp31@ETGENG_46 MINGW64 ~/desktop/git_learn/git3 (develop)
+$
+
+
